@@ -1,7 +1,7 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "",
+  "description": "college management MERN project",
   "main": "index.js",
   "scripts": {
     "start": "node app.js"

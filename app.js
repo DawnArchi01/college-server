@@ -2,20 +2,20 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require('dotenv')
+dotenv.config({ path: '../config.env'})
 app.use(express.json());
 const cors = require("cors");
-app.use(cors());
+const corsOptions = require('./config/corsOptions')
 const bcrypt = require("bcryptjs");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use("/files", express.static("files"))
-
+app.use(cors(corsOptions));
 
 const jwt = require("jsonwebtoken");
-dotenv.config({ path: '../config.env'})
 const JWT_SECRET = process.env.JWT_KEY
 const mongoUrl = process.env.MONGO_URL
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000;
 
 mongoose.set("strictQuery", false);
 mongoose
